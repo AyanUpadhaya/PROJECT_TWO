@@ -137,7 +137,7 @@ function Cart() {
                   Total price
                 </label>
                 <div className="text-large">
-                  <strong>${calculateTotalPrice()}</strong>
+                  <strong>€{calculateTotalPrice()}</strong>
                 </div>
               </div>
 
