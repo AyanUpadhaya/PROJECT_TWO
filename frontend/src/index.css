@@ -95,6 +95,19 @@ input[type="number"]::-webkit-outer-spin-button {
 .max-w-max {
   max-width: max-content;
 }
-.custom-bg{
-  background-color: #1C274C !important;
+.custom-bg {
+  background-color: #1c274c !important;
+}
+.alert-success {
+  background-color: rgb(202, 150, 82) !important;
+  color: #fff !important;
+}
+.alert-danger {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+div {
+  word-break: keep-all;
+  word-wrap: break-word;
 }

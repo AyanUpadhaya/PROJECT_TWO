@@ -75,7 +75,6 @@ export const AuthProvider = ({ children }) => {
   const logout = (message = "You have been logged out.") => {
     localStorage.removeItem("buchhandlung_auth");
     setUser(null);
-    alert(message);
   };
   // Check if the user is authenticated
   const isAuthenticated = !!user;

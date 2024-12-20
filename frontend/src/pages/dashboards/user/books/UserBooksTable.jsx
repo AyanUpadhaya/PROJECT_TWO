@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import formatToLocaleDateString from "../../../../utils/formatToLocaleDateString";
 import useBooks from "../../../../hooks/useBooks";
+import ViewIcon from "../../../../components/dashboard/icons/ViewIcon";
+import EditIcon from "../../../../components/dashboard/icons/EditIcon";
+import TrashIcon from "../../../../components/dashboard/icons/TrashIcon";
 
 const UserBooksTable = ({ data }) => {
   const navigate = useNavigate();
@@ -65,13 +68,13 @@ const UserBooksTable = ({ data }) => {
                       onClick={() => handleNavigate(book, "details")}
                       className="btn btn-success"
                     >
-                      Details
+                      <ViewIcon />
                     </button>
                     <button
                       onClick={() => handleNavigate(book, "update")}
                       className="btn btn-primary"
                     >
-                      Edit
+                      <EditIcon />
                     </button>
                     <button
                       onClick={() => {
@@ -80,9 +83,11 @@ const UserBooksTable = ({ data }) => {
                       disabled={isDeleting && btnIndex == index}
                       className="btn btn-danger"
                     >
-                      {isDeleting && btnIndex == index
-                        ? "Deleting..."
-                        : "Delete"}
+                      {isDeleting && btnIndex == index ? (
+                        "..."
+                      ) : (
+                        <TrashIcon></TrashIcon>
+                      )}
                     </button>
                   </td>
                 </tr>
