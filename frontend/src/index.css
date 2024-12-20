@@ -88,9 +88,9 @@ input[type="number"]::-webkit-outer-spin-button {
   text-decoration: none;
 }
 .link-text:hover {
-  background-color: #6c757db9;
-  color: #fff;
-  transition: all 0.3s ease-in;
+  background-color: #6c757db9 !important;
+  color: #fff !important;
+  transition: all 0.3s ease-in !important;
 }
 .max-w-max {
   max-width: max-content;

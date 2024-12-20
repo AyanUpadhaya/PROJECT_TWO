@@ -5,7 +5,7 @@ function WebsiteLayout() {
   return (
     <div className="bg-light">
       <Header></Header>
-      <main className="container">
+      <main className="">
         <Outlet></Outlet>
       </main>
     </div>

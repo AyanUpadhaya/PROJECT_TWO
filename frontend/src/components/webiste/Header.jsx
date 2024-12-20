@@ -1,76 +1,76 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
-import { cartpic, smalllogo } from "../../assets/getAssets";
+import { cartpic, logoblack, smalllogo } from "../../assets/getAssets";
+import "./Header.css";
 
 function Header() {
   const { isAuthenticated, logout } = useAuth();
   const { cart, addToCart } = useCart();
-  return (
-    <div>
-      <nav
-        className="navbar navbar-expand-lg bg-success shadow-lg "
-        data-bs-theme="dark"
-      >
-        <div className="container">
-          <Link to={"/"} className="navbar-brand">
-            <img src={smalllogo} className="img-fluid" alt="" />
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="navbar-nav  mb-2 ms-auto mb-lg-0 d-flex gap-3">
-              <div>
-                {!isAuthenticated ? (
-                  <>
-                    <li className="nav-item">
-                      <Link
-                        to={"login"}
-                        className="btn btn-lg btn-secondary text-white"
-                        aria-current="page"
-                      >
-                        Login
-                      </Link>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="nav-item">
-                      <Link
-                        to={"/dashboard"}
-                        className="btn btn-lg btn-dark"
-                        aria-current="page"
-                      >
-                        Dashboard
-                      </Link>
-                    </li>
-                  </>
-                )}
-              </div>
+  const location = useLocation();
 
-              <div className="position-relative ms-auto">
+  function isActive(path, location) {
+    return path.includes(location.pathname) ? "active-color" : "";
+  }
+  return (
+    <div className="bg-white shadow-sm">
+      <div className="custom-container ">
+        <Link to="/" className="nav-link ">
+          <img src={logoblack} alt="The Buchhandlung" className="custom-logo" />
+        </Link>
+
+        {/* Navigation Links */}
+        <ul className="custom-nav">
+          <li>
+            <Link
+              to="/"
+              className={`nav-link p-2 ${isActive(["/"], location)}`}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/cart"
+              className={`nav-link p-2 ${isActive(["/cart"], location)}`}
+            >
+              Cart{" "}
+              {cart?.length > 0 && (
+                <span className="custom-badge">{cart && cart?.length}</span>
+              )}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              className={`nav-link p-2  ${isActive(["/about"], location)}`}
+            >
+              About
+            </Link>
+          </li>
+        </ul>
+        <ul className="auth-btn-container list-unstyled">
+          {!isAuthenticated ? (
+            <li className="nav-item">
+              <Link to={"/login"} className="auth-btn">
+                Login
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li className="nav-item">
                 <Link
-                  to={"cart"}
-                  className="btn btn-lg btn-light"
+                  to={"/dashboard"}
+                  className="btn btn-lg btn-dark"
                   aria-current="page"
                 >
-                  <img src={cartpic} alt="" />
-                  <span className="text-dark">{cart && cart?.length}</span>
+                  Dashboard
                 </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

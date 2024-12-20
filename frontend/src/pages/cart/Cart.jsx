@@ -71,7 +71,7 @@ function Cart() {
 
   return (
     <div className="py-2">
-      <div className="card ">
+      <div className="card container ">
         <div className="card-body border-radius-40">
           <div className="table-responsive">
             <table className="table m-0">

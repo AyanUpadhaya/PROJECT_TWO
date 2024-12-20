@@ -67,7 +67,7 @@ function Home() {
   const hasBooks = Object.keys(filteredBooks).length > 0;
 
   return (
-    <div className="container-fluid mt-4">
+    <div className="container mt-4">
       <div className="mb-4">
         <input
           type="text"

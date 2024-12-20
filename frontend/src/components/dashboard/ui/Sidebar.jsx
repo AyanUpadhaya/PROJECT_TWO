@@ -40,20 +40,21 @@ export default function Sidebar() {
                 <span>Dashboard</span>
               </Link>
             </li>
-            {/* profile */}
+            {/* my orders */}
             <li>
               <Link
-                to={`/dashboard/${role}/profile`}
+                to={`/dashboard/${role}/purchase_history`}
                 className={`nav-link d-flex align-items-center fs-5 gap-1 link-text ${isActive(
-                  ["/dashboard/user/profile"],
+                  ["/dashboard/user/purchase_history"],
                   location
                 )}`}
                 aria-current="page"
               >
-                <ProfileIcon></ProfileIcon>
-                <span>Profile</span>
+                <PurchaseIcon></PurchaseIcon>
+                <span>My Orders</span>
               </Link>
             </li>
+
             {/* store */}
             <li>
               <Link
@@ -71,6 +72,21 @@ export default function Sidebar() {
               >
                 <StoreIcon></StoreIcon>
                 <span>Store</span>
+              </Link>
+            </li>
+
+            {/* store orders */}
+            <li className={`${!user.is_store_owner && "d-none"}`}>
+              <Link
+                to={`/dashboard/${role}/orders`}
+                className={`nav-link d-flex align-items-center fs-5 gap-1 link-text ${isActive(
+                  ["/dashboard/user/orders"],
+                  location
+                )}`}
+                aria-current="page"
+              >
+                <OrderIcon></OrderIcon>
+                <span>Store orders</span>
               </Link>
             </li>
             {/* books */}
@@ -92,34 +108,7 @@ export default function Sidebar() {
                 <span>Books</span>
               </Link>
             </li>
-            {/* my orders */}
-            <li>
-              <Link
-                to={`/dashboard/${role}/purchase_history`}
-                className={`nav-link d-flex align-items-center fs-5 gap-1 link-text ${isActive(
-                  ["/dashboard/user/purchase_history"],
-                  location
-                )}`}
-                aria-current="page"
-              >
-                <PurchaseIcon></PurchaseIcon>
-                <span>My Orders</span>
-              </Link>
-            </li>
-            {/* store orders */}
-            <li className={`${!user.is_store_owner && "d-none"}`}>
-              <Link
-                to={`/dashboard/${role}/orders`}
-                className={`nav-link d-flex align-items-center fs-5 gap-1 link-text ${isActive(
-                  ["/dashboard/user/orders"],
-                  location
-                )}`}
-                aria-current="page"
-              >
-                <OrderIcon></OrderIcon>
-                <span>Store orders</span>
-              </Link>
-            </li>
+
             {/* Settings */}
             <li>
               <Link
